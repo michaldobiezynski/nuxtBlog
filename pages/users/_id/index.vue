@@ -7,5 +7,6 @@ export default {
     console.log(data);
     return /^\d+$/.test(data.params.id);
   },
+  layout: "users",
 };
 </script>
