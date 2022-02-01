@@ -1,25 +1,13 @@
 <template>
   <section class="featured-posts">
     <PostPreview
-      id="1"
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
       :isAdmin="isAdmin"
-      title="Hello there"
-      previewText="This is my first post!"
-      thumbnail="https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/The-10-Tech-Trends-That-Will-Transform-Our-World/960x0.jpg?fit=bounds&format=jpg&width=960"
-    />
-    <PostPreview
-      id="2"
-      :isAdmin="isAdmin"
-      title="Hello there 2"
-      previewText="This is my second post!"
-      thumbnail="https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/The-10-Tech-Trends-That-Will-Transform-Our-World/960x0.jpg?fit=bounds&format=jpg&width=960"
-    />
-    <PostPreview
-      id="3"
-      :isAdmin="isAdmin"
-      title="Hi"
-      previewText="This is my third post!"
-      thumbnail="https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/The-10-Tech-Trends-That-Will-Transform-Our-World/960x0.jpg?fit=bounds&format=jpg&width=960"
+      :title="post.title"
+      :previewText="post.previewText"
+      :thumbnail="post.thumbnail"
     />
   </section>
 </template>
@@ -31,6 +19,10 @@ export default {
   components: { PostPreview },
   props: {
     isAdmin: { type: Boolean, default: false },
+    posts: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
