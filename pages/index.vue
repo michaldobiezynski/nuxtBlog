@@ -14,7 +14,7 @@ export default {
   components: { PostList },
   computed: {
     loadedPosts() {
-      this.$store.getters.loadedPosts;
+      return this.$store.getters.loadedPosts;
     },
   },
 };

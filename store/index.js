@@ -39,7 +39,7 @@ const createStore = () => {
       },
     },
     getters: {
-      loadedPosts(state) {
+      loadedPosts: (state) => {
         return state.loadedPosts;
       },
     },
