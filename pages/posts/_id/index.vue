@@ -22,26 +22,17 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   asyncData(context) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          loadedPost: {
-            id: "1",
-            title: "First Post (ID: " + context.route.params.id + ")",
-            previewText: "This is our first post!",
-            author: "Michal",
-            updatedDate: new Date(),
-            content: "bla bla bla bla bla bla",
-            thumbnail:
-              "https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/The-10-Tech-Trends-That-Will-Transform-Our-World/960x0.jpg?fit=bounds&format=jpg&width=960",
-          },
-        });
-      }, 1000);
-    })
-      .then((data) => {
-        return data;
+    console.log(context.$config.firebaseKey + "/" + context.params.id);
+    return axios
+      .get(context.$config.firebaseKey + "/" + context.params.id + ".json")
+      .then((res) => {
+        console.log(res.data);
+        return {
+          loadedPost: res.data,
+        };
       })
       .catch((e) => {
         context.error(new Error());
