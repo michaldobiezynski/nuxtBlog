@@ -17,6 +17,7 @@ const createStore = () => {
         return axios
           .get(this.$config.firebaseKey + ".json")
           .then((res) => {
+            console.log("res", res.data);
             const postsArray = [];
             for (const key in res.data) {
               postsArray.push({ ...res.data[key], id: key });
