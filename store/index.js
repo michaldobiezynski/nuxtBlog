@@ -13,11 +13,22 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
-        console.log(this.$config.firebaseKey + ".json");
         return axios
           .get(this.$config.firebaseKey + ".json")
           .then((res) => {
             console.log("res", res.data);
+            const postsArray = [];
+            for (const key in res.data) {
+              postsArray.push({ ...res.data[key], id: key });
+            }
+            vuexContext.commit("setPosts", postsArray);
+          })
+          .catch((e) => console.error(e));
+      },
+      fetchPosts(vuexContext, context) {
+        return axios
+          .get(this.$config.firebaseKey + ".json")
+          .then((res) => {
             const postsArray = [];
             for (const key in res.data) {
               postsArray.push({ ...res.data[key], id: key });
