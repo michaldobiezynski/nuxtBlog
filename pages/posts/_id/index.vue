@@ -25,7 +25,6 @@
 import axios from "axios";
 export default {
   asyncData(context) {
-    console.log(context.$config.firebaseKey + "/" + context.params.id);
     return axios
       .get(context.$config.firebaseKey + "/" + context.params.id + ".json")
       .then((res) => {
@@ -40,7 +39,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .single-post-page {
