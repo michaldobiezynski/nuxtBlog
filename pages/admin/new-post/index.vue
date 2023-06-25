@@ -21,7 +21,7 @@ export default {
           "https://nuxt-blog-25e9f-default-rtdb.europe-west1.firebasedatabase.app/posts.json",
           { ...formData, updatedDate: new Date() }
         )
-        .then((results) => console.log(results))
+        .then(() => this.$router.push("/posts"))
         .catch((e) => console.error(e));
     },
   },
