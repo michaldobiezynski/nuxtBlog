@@ -17,9 +17,21 @@ export default {
       return this.$store.getters.loadedPosts;
     },
   },
+  methods: {
+    async fetchPosts() {
+      await this.$store.dispatch("fetchPosts");
+    },
+  },
+  fetch() {
+    this.fetchPosts();
+  },
+  watch: {
+    $route() {
+      this.fetchPosts();
+    },
+  },
 };
 </script>
-
 
 <style scoped>
 .intro {
@@ -52,5 +64,5 @@ export default {
     font-size: 2rem;
   }
 }
-</style>>
-
+</style>
+>
